@@ -11,7 +11,8 @@
     <title>Home</title>
 </head>
 <body>
-<header class='flex border-b py-3 px-4 sm:px-10 bg-slate-900 font-[sans-serif] min-h-[65px] tracking-wide fixed top-0 left-0 z-50 w-full'>
+<header class='flex border-b py-3 px-4 sm:px-10 bg-slate-900 font-[sans-serif] min-h-[65px] tracking-wide fixed top-0 left-0 z-50 w-full'
+        x-data="{active: 'home'}">
     <div class='flex flex-wrap items-center gap-4 max-w-screen-xl mx-auto w-full'>
         <a href="javascript:void(0)" class="max-sm:hidden"><img src="https://readymadeui.com/readymadeui.svg"
                                                                 alt="logo"
@@ -45,24 +46,37 @@
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'>
                     <a href='#hero-section-wrapper'
-                       class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>Home</a>
+                       @click="active='home'"
+                       x-bind:class="active==='home' ? 'text-orange-700' : 'text-orange-300'"
+                       class='lg:hover:text-orange-700 block text-[15px]'>Home</a>
                 </li>
-                <li class='max-lg:border-b max-lg:py-3 px-3'><a href='#pricing-wrapper'
-                                                                class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>Pricing</a>
+                <li class='max-lg:border-b max-lg:py-3 px-3'>
+                    <a href='#pricing-wrapper'
+                       @click="active='pricing'"
+                       x-bind:class="active==='pricing' ? 'text-orange-700' : 'text-orange-300'"
+                       class='lg:hover:text-orange-700 block text-[15px]'>Pricing</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'><a href='#team-wrapper'
-                                                                class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>Our
-                    team</a>
+                                                                @click="active='team'"
+                                                                x-bind:class="active==='team' ? 'text-orange-700' : 'text-orange-300'"
+                                                                class='lg:hover:text-orange-700 block text-[15px]'>Our
+                    Team</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'><a href='#contact-form-wrapper'
-                                                                class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>Contact
+                                                                @click="active='contact-us'"
+                                                                x-bind:class="active==='contact-us' ? 'text-orange-700' : 'text-orange-300'"
+                                                                class='lg:hover:text-orange-700 block text-[15px]'>Contact
                     us</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'><a href='#blog-wrapper'
-                                                                class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>Blog</a>
+                                                                @click="active='blog'"
+                                                                x-bind:class="active==='blog' ? 'text-orange-700' : 'text-orange-300'"
+                                                                class='lg:hover:text-orange-700 block text-[15px]'>Blog</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'><a href='#faq-wrapper'
-                                                                class='lg:hover:text-orange-700 text-orange-300 block text-[15px]'>FAQ</a>
+                                                                @click="active='faq'"
+                                                                x-bind:class="active==='faq' ? 'text-orange-700' : 'text-orange-300'"
+                                                                class='lg:hover:text-orange-700 block text-[15px]'>FAQ</a>
                 </li>
             </ul>
         </div>
