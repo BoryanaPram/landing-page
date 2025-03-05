@@ -13,6 +13,7 @@ function contactFormHandler() {
                 if (!res.ok) {
                     throw res.json()
                 }
+                console.log($event);
                 return res.json()
             }).then(res => {
                 showSuccessModal(res.message)

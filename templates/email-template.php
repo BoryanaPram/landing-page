@@ -1,5 +1,4 @@
-<h2>HELLO</h2>
-<h4>moto</h4>
+<h1>You have a new customer request</h1>
 <hr>
 <?= $emailTemplateVar['receiver'] ?>
 <hr>

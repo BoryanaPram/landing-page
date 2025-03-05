@@ -28,7 +28,7 @@ try {
         $dataDecoded = json_decode($data, true);
     }
 
-    $emailTemplateVar['receiver'] = 'zdr';
+    $emailTemplateVar['receiver'] = '';
     ob_start();
     include('../templates/email-template.php');
     $bodyHtml = ob_get_contents();
