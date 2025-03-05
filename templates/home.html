@@ -1,20 +1,24 @@
-<div class="bg-gradient-to-b from-orange-300 to-orange-600 px-6 sm:py-20 py-10 font-[sans-serif]"
-     id="hero-section-wrapper">
-    <div class="max-w-screen-xl mx-auto text-center text-white">
-        <h1 class="text-5xl max-sm:text-3xl font-extrabold leading-tight mb-6 text-slate-900">Welcome to Our Premium
-            Service</h1>
-        <p class="text-lg mb-12 text-slate-900">Experience excellence like never before with our exclusive products
-            and
-            services.</p>
-        <button type="button"
-                @click="window.location.href='#contact-form-wrapper'"
-                class="bg-orange-800 text-white text-lg tracking-wide px-8 py-2.5 rounded-full transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
-            Contact us
-        </button>
+<div class="relative h-full">
+    <div class="absolute top-0 left-0 right-0 h-full
+bg-gradient-to-r from-orange-600 to-orange-200 z-20 opacity-75">
+    </div>
+    <div class="font-[sans-serif]"
+         id="hero-section-wrapper">
+        <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+             alt="fitness photo" class="w-full h-screen object-cover"/>
+        <div class="max-w-full mx-auto text-left absolute top-64 sm:left-16 left-4 z-30 md:left-8">
+            <h1 class="whitespace-nowrap xl:text-9xl md:text-6xl max-sm:text-3xl font-extrabold leading-tight mb-6 text-neutral-50 absolute">
+                Transform Your Body<br/>
+                Elevate Your Life</h1>
+            <a href="#contact-form-wrapper"
+               class="absolute z-30 whitespace-nowrap top-32 lg:top-64 mt-16 bg-orange-800 text-white text-lg tracking-wide
+               px-8 py-4 rounded-full transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+                Contact us
+            </a>
+        </div>
     </div>
 </div>
-
-<div class="font-[sans-serif] p-4 bg-slate-900" id="pricing-wrapper">
+<div class="font-[sans-serif] p-4 bg-slate-900 py-20" id="pricing-wrapper">
     <div class="max-w-5xl max-lg:max-w-2xl mx-auto">
         <div class="text-center">
             <h2 class="text-orange-300 text-3xl font-bold mb-4">Pricing</h2>
@@ -57,45 +61,32 @@
     </div>
 </div>
 
-<div class="font-sans" id="team-wrapper">
+<div class="font-sans bg-slate-900 py-40" id="team-wrapper"
+     x-data="{ team: [
+{ name: 'John Doe', position: 'Software Engineer', imageUrl: 'https://readymadeui.com/team-1.webp' },
+{ name: 'Mark Adair', position: 'Web Developer', imageUrl: 'https://readymadeui.com/team-2.webp' },
+{ name: 'Simon Konecki', position: 'Web Designer',  imageUrl: 'https://readymadeui.com/team-3.webp' }
+]}">
     <div class="max-w-4xl mx-auto">
         <div class="text-center">
-            <h2 class="text-gray-800 text-4xl font-bold">Meet our team</h2>
+            <h2 class="text-orange-300 text-4xl font-bold">Meet our team</h2>
         </div>
-
         <div class="grid sm:grid-cols-3 gap-6 max-sm:justify-center mt-12 max-sm:max-w-xs mx-auto">
-            <div class="bg-gray-800 p-3 border rounded-lg">
-                <img src="https://readymadeui.com/team-1.webp"
-                     class="w-full object-contain aspect-square object-top rounded-lg"/>
+            <template x-for="teamMember in team">
+                <div class="bg-gray-800 p-3 border rounded-lg">
+                    <img :src="teamMember.imageUrl"
+                         class="w-full object-contain aspect-square object-top rounded-lg"/>
 
-                <div class="text-center mt-4 mb-1">
-                    <h4 class="text-base font-semibold text-white">Software Engineer</h4>
-                    <p class="text-xs mt-1 text-gray-300">John Doe</p>
+                    <div class="text-center mt-4 mb-1">
+                        <h4 class="text-base font-semibold text-white" x-text="teamMember.name"></h4>
+                        <p class="text-xs mt-1 text-gray-300" x-text="teamMember.position"></p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="bg-gray-800 p-3 border rounded-lg">
-                <img src="https://readymadeui.com/team-2.webp"
-                     class="w-full object-contain aspect-square object-top rounded-lg"/>
-
-                <div class="text-center mt-4 mb-1">
-                    <h4 class="text-base font-semibold text-white">Web Developer</h4>
-                    <p class="text-xs mt-1 text-gray-300">Mark Adair</p>
-                </div>
-            </div>
-
-            <div class="bg-gray-800 p-3 border rounded-lg">
-                <img src="https://readymadeui.com/team-3.webp"
-                     class="w-full object-contain aspect-square object-top rounded-lg"/>
-
-                <div class="text-center mt-4 mb-1">
-                    <h4 class="text-base font-semibold text-white">Web Designer</h4>
-                    <p class="text-xs mt-1 text-gray-300">Simon Konecki</p>
-                </div>
-            </div>
+            </template>
         </div>
     </div>
 </div>
+
 
 <div id="contact-form-wrapper" class="bg-slate-900 pt-10 pb-20">
     <div class="p-4 mx-auto max-w-xl font-[sans-serif]">
@@ -227,7 +218,7 @@
 </div>
 
 <div class="bg-slate-900" id="faq-wrapper">
-    <div class="font-sans divide-y rounded-lg max-w-4xl mx-auto px-4">
+    <div class="font-sans divide-y rounded-lg max-w-4xl mx-auto px-4 py-20">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-orange-400">Frequently asked questions</h2>
         </div>
@@ -260,7 +251,7 @@
                         </svg>
                     </button>
                     <div class="content overflow-hidden transition-all duration-300" x-show="open">
-                        <p class="text-sm text-gray-600" x-text="qa.answer"></p>
+                        <p class="text-sm text-orange-200" x-text="qa.answer"></p>
                     </div>
                 </div>
             </template>
