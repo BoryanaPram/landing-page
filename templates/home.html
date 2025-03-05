@@ -1,0 +1,269 @@
+<div class="bg-gradient-to-b from-orange-300 to-orange-600 px-6 sm:py-20 py-10 font-[sans-serif]"
+     id="hero-section-wrapper">
+    <div class="max-w-screen-xl mx-auto text-center text-white">
+        <h1 class="text-5xl max-sm:text-3xl font-extrabold leading-tight mb-6 text-slate-900">Welcome to Our Premium
+            Service</h1>
+        <p class="text-lg mb-12 text-slate-900">Experience excellence like never before with our exclusive products
+            and
+            services.</p>
+        <button type="button"
+                @click="window.location.href='#contact-form-wrapper'"
+                class="bg-orange-800 text-white text-lg tracking-wide px-8 py-2.5 rounded-full transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+            Contact us
+        </button>
+    </div>
+</div>
+
+<div class="font-[sans-serif] p-4 bg-slate-900" id="pricing-wrapper">
+    <div class="max-w-5xl max-lg:max-w-2xl mx-auto">
+        <div class="text-center">
+            <h2 class="text-orange-300 text-3xl font-bold mb-4">Pricing</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-6 mt-10 max-sm:max-w-sm max-sm:mx-auto"
+             x-data="{ plans: [
+                    { name: 'mini', price: '$20', included: ['basic workout plan', 'nutrition tips'] },
+                    { name: 'midi', price: '$100', included: ['personalized workout plan', 'detailed nutrition guide', 'weekly check-ins'] },
+                    { name: 'maxi', price: '$150', included: ['1-on-1 coaching', 'custom workout and meal plan', 'progress tracking', 'priority support'] }
+                ]
+            }"
+        >
+            <template x-for="plan in plans">
+                <div class="border rounded-md p-6">
+                    <h3 class="text-orange-400 text-xl font-semibold mb-2" x-text="plan.name"></h3>
+                    <div class="mt-6">
+                        <h3 class="text-orange-400 text-2xl font-semibold" x-text="plan.price"><sub
+                                class="text-orange-300 text-sm font-medium">per month</sub></h3>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-orange-400 text-lg font-semibold mb-2">Include</h4>
+                        <p class="text-sm text-orange-300">Everything you get in this plan</p>
+                    </div>
+                    <ul class="mt-6 space-y-4">
+                        <template x-for="include in plan.included">
+                            <li class="flex items-center text-sm text-orange-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" class="mr-3 fill-green-500"
+                                     viewBox="0 0 24 24">
+                                    <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                                          data-original="#000000"/>
+                                </svg>
+                                <span x-text="include"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+<div class="font-sans" id="team-wrapper">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center">
+            <h2 class="text-gray-800 text-4xl font-bold">Meet our team</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6 max-sm:justify-center mt-12 max-sm:max-w-xs mx-auto">
+            <div class="bg-gray-800 p-3 border rounded-lg">
+                <img src="https://readymadeui.com/team-1.webp"
+                     class="w-full object-contain aspect-square object-top rounded-lg"/>
+
+                <div class="text-center mt-4 mb-1">
+                    <h4 class="text-base font-semibold text-white">Software Engineer</h4>
+                    <p class="text-xs mt-1 text-gray-300">John Doe</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-3 border rounded-lg">
+                <img src="https://readymadeui.com/team-2.webp"
+                     class="w-full object-contain aspect-square object-top rounded-lg"/>
+
+                <div class="text-center mt-4 mb-1">
+                    <h4 class="text-base font-semibold text-white">Web Developer</h4>
+                    <p class="text-xs mt-1 text-gray-300">Mark Adair</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-3 border rounded-lg">
+                <img src="https://readymadeui.com/team-3.webp"
+                     class="w-full object-contain aspect-square object-top rounded-lg"/>
+
+                <div class="text-center mt-4 mb-1">
+                    <h4 class="text-base font-semibold text-white">Web Designer</h4>
+                    <p class="text-xs mt-1 text-gray-300">Simon Konecki</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contact-form-wrapper" class="bg-slate-900 pt-10 pb-20">
+    <div class="p-4 mx-auto max-w-xl font-[sans-serif]">
+        <h1 class="text-2xl text-gray-800 font-bold text-center text-orange-300">Contact us</h1>
+
+        <form x-data="contactFormHandler()" @submit.prevent="submitForm" class="mt-8 space-y-4">
+            <input
+                    name="name"
+                    x-model="formData.name"
+                    type='text' placeholder='Name'
+                    required
+                    class="w-full py-2.5 px-4 text-slate-700 bg-orange-100 border focus:border-black text-sm outline-none transition-all rounded-xl"/>
+            <input
+                    name="email"
+                    x-model="formData.email"
+                    type='email' placeholder='Email'
+                    required
+                    class="w-full py-2.5 px-4 text-slate-700 bg-orange-100 border focus:border-black text-sm outline-none transition-all rounded-xl"/>
+            <input
+                    name="subject"
+                    x-model="formData.subject"
+                    type='text' placeholder='Subject'
+                    required
+                    class="w-full py-2.5 px-4 text-slate-700 bg-orange-100 border focus:border-black text-sm outline-none transition-all rounded-xl"/>
+            <textarea
+                    name="message"
+                    x-model="formData.message"
+                    placeholder='Message' rows="4"
+                    required
+                    class="w-full px-4 text-slate-700 bg-orange-100 border focus:border-black text-sm pt-3 outline-none transition-all rounded-xl"></textarea>
+            <button type='submit'
+                    class="text-white bg-orange-900 font-medium tracking-wide text-sm px-4 py-2.5 w-full outline-none rounded-xl hover:bg-orange-800 ease-in-out">
+                Send
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="bg-gray-100 md:px-10 px-4 py-12 font-[sans-serif]" id="blog-wrapper">
+    <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-8">Latest Blog Posts</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:gap-8">
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/cardImg.webp" alt="Blog Post 1"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Lorem Ipsum Dolor</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/hotel-img.webp" alt="Blog Post 2"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Consectetur Adipiscing</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/team-image.webp" alt="Blog Post 3"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Lorem Ipsum Sit Amet</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/prediction.webp" alt="Blog Post 3"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Lorem Ipsum Sit Amet</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/hacks-watch.webp" alt="Blog Post 3"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Lorem Ipsum Sit Amet</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+            <div class="bg-white rounded overflow-hidden">
+                <img src="https://readymadeui.com/Imagination.webp" alt="Blog Post 3"
+                     class="w-full h-52 object-cover"/>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Lorem Ipsum Sit Amet</h3>
+                    <p class="text-gray-500 text-sm">Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse
+                        cillum dolore...</p>
+                    <p class="text-orange-500 text-[13px] font-semibold mt-4">08 April 2024</p>
+                    <a href="javascript:void(0);"
+                       class="mt-4 inline-block px-4 py-2 rounded tracking-wider bg-orange-500 hover:bg-orange-600 text-white text-[13px]">Read
+                        More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-slate-900" id="faq-wrapper">
+    <div class="font-sans divide-y rounded-lg max-w-4xl mx-auto px-4">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-orange-400">Frequently asked questions</h2>
+        </div>
+        <div x-data="{ faq: [
+                    { question: 'What types of fitness programs do you offer?',
+                    answer: `We offer a variety of fitness programs including strength training, cardio, flexibility, yoga, pilates, and HIIT.
+                     Whether you're a beginner or an advanced athlete, we have customized plans to fit your needs.` },
+                    { question: 'Do I need any equipment to get started?',
+                    answer: `It depends on the program. Many of our fitness plans can be done with just bodyweight exercises, but some
+                    programs may require basic equipment like dumbbells, resistance bands, or a yoga mat.
+                    We provide a list of recommended equipment in each program description.` },
+                    { question: 'How do I create a personalized workout plan?',
+                    answer: `To create your personalized workout plan, simply take our fitness quiz or fill out your goals,
+                     fitness level, and preferences on our website. Our algorithm will tailor a plan based on your input.` }
+                ]
+            }"
+        >
+            <template x-for="qa in faq">
+                <div class="accordion" role="accordion" x-data="{open:false}">
+                    <button type="button"
+                            class="toggle-button w-full text-base outline-none text-left font-semibold py-6 text-orange-300 hover:text-orange-400 flex items-center"
+                            @click="open=!open">
+                        <span class="mr-4" x-text="qa.question"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"
+                             class="w-3 fill-current ml-auto shrink-0">
+                            <path class="plus"
+                                  d="M37.059 16H26V4.941C26 2.224 23.718 0 21 0s-5 2.224-5 4.941V16H4.941C2.224 16 0 18.282 0 21s2.224 5 4.941 5H16v11.059C16 39.776 18.282 42 21 42s5-2.224 5-4.941V26h11.059C39.776 26 42 23.718 42 21s-2.224-5-4.941-5z"/>
+                            <path
+                                    d="M37.059 16H4.941C2.224 16 0 18.282 0 21s2.224 5 4.941 5h32.118C39.776 26 42 23.718 42 21s-2.224-5-4.941-5z"/>
+                        </svg>
+                    </button>
+                    <div class="content overflow-hidden transition-all duration-300" x-show="open">
+                        <p class="text-sm text-gray-600" x-text="qa.answer"></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
